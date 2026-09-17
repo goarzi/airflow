@@ -1,0 +1,40 @@
+from airflow.sdk import DAG
+
+import datetime
+
+import pendulum
+
+from airflow.operators.empty import emptyoperator
+with DAG(
+    dag_id="dags_corn_test",
+    schedule=None,
+    start_date=pendulum.datetime(2023, 3, 1, tz="Asia/Seoul"),
+    catchup=False
+) as dag:
+    t1 = emptyoperator(
+        task_id="t1"
+    )
+    t2 = emptyoperator(
+        task_id="t2"
+    )
+    t3 = emptyoperator(
+        task_id="t3"
+    )
+    t4 = emptyoperator(
+        task_id="t4"
+    )
+    t5 = emptyoperator(
+        task_id="t5"
+    )
+    t6 = emptyoperator(
+        task_id="t6"
+    )
+    t7 = emptyoperator(
+        task_id="t7"
+    )
+    t8 = emptyoperator(
+        task_id="t8"
+    )
+    t1 >> [t2,t3] >> t4
+    t5 >> t4
+    [t4,t7] >> t6 >> t8
