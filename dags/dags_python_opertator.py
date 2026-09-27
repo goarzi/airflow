@@ -1,9 +1,6 @@
 from airflow.sdk import DAG
-
 import datetime
-
 import pendulum
-
 from airflow.providers.standard.operators.python import PythonOperator
 
 with DAG(
